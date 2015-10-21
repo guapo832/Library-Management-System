@@ -1,0 +1,35 @@
+﻿@model List<LibrarySystem.Areas.Members.Models.LibraryMemberBase>
+
+@{
+    ViewBag.Title = "Members";
+    Layout = "~/Views/Shared/_LibrarySystemLayoutPage.cshtml";
+}
+
+@Html.Partial("~/Areas/Members/Views/Shared/_Header.cshtml")
+
+<h1>Select who you are (Be Honest!)</h1>
+<table>
+    <tr>
+        <th>
+            Member Name
+        </th>
+        <th>Member ID</th>
+        <th>Items Borrowed</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.MemberName, "Details", "Member", new { mid = item.ID }, null)
+            </td>
+            <td>
+                @Html.DisplayTextFor(model => item.ID)
+            </td>
+            <td>
+                @Html.DisplayTextFor(model => item.BorrowedItems.Count)
+            </td>
+        </tr>
+    }
+
+</table>

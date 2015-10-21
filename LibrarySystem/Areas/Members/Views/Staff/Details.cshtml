@@ -1,0 +1,56 @@
+﻿@model LibrarySystem.Areas.Members.Models.StaffMember
+
+@{
+    ViewBag.Title = "Staff Details";
+    Layout = "~/Views/Shared/_LibrarySystemLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>StaffMember</legend>
+
+    <h2 class="display-field">
+      Hello  @Html.DisplayFor(model => model.MemberName)
+    </h2>
+    <h3>Tell me what you want to do.</h3>
+    <p>
+        @Html.RouteLink("Browse Literature", "Inventory", new { area = "Inventory", action = "Staff", controller = "Default", mid = Model.ID }) |
+        @Html.Partial("~/Areas/Inventory/Views/Shared/_Logout.cshtml")
+    </p>
+    @if (Model.BorrowedItems.Count > 0)
+    {
+      <fieldset>
+        <legend>Borrowed Items</legend>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Title</th>
+                      <th>Author</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  @foreach (var item in Model.BorrowedItems)
+                  {
+                      <tr>
+                          <td>@item.GetItem().Title</td>
+                          <td>@item.GetItem().Author</td>
+                          <td>@Html.ActionLink("Return","ReturnItem",new{ memberid=Model.ID, itemID=item.GetId()},null)</td>
+                      </tr>
+                  }
+              </tbody>
+          </table>
+          
+      </fieldset>
+    } else
+	{
+    <fieldset>
+        <legend>Borrowed Items</legend>
+        <p>No Items Borrowed</p>
+    </fieldset>       
+	} 
+        
+    
+    
+
+

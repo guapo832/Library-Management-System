@@ -1,0 +1,173 @@
+﻿@model Dictionary<String, List<LibrarySystem.InventoryItemBase>>
+
+@{
+    ViewBag.Title = "Staff";
+    Layout = "~/Views/Shared/_LibrarySystemLayoutPage.cshtml";
+}
+<style>
+    table tr td{
+        font-size:smaller;
+    }
+</style>
+<h2><span>Inventory for Staff</span>@if ((bool)ViewData["IsLibrarian"]){<span>- Librarian</span>}</h2>
+<hr />
+@Html.ActionLink("My Profile", "Details", "Staff", new { area = "Members", mid = (int)ViewData["MemberID"] }, null) |
+@Html.Partial("~/Areas/Inventory/Views/Shared/_Logout.cshtml")
+<div style="margin-left:auto;margin-right:auto;width:auto">
+    <fieldset>
+        <legend>Books</legend>
+        @if ((bool)ViewData["IsLibrarian"])
+        {
+            <span>@Html.ActionLink("Add Book", "Create", "Books", new { memberID = (int)ViewData["MemberID"] }, null)</span>
+        }
+        <table width="100%" border="1" style="margin-left:auto;margin-right:auto">
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Author
+                </th>
+
+                <th>Number of Copies</th>
+                <th>Number of Copies Checked Out</th>
+                <th></th>
+                <th colspan="4">
+                    @if ((bool)ViewData["IsLibrarian"])
+                    {
+                        <b>Admin</b>
+                    }
+                </th>
+            </tr>
+
+            @foreach (LibrarySystem.Areas.Inventory.Models.Book item in Model["Books"])
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.BookCopies.Count)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.NumberCopiesBorrowed)
+                    </td>
+                    <td align="center">
+                        @if (item.NumberCopiesBorrowed < item.BookCopies.Count && (bool)ViewData["ShowBorrow"] == true)
+                        {
+                            @Html.ActionLink("Borrow", "BorrowCopy", "Books", new { bookID = item.GetId(), MemberID = ViewData["MemberID"] }, null);
+                        }
+                        else
+                        {
+
+                        }
+
+
+                    </td>
+                    @if ((bool)ViewData["IsLibrarian"])
+                    {
+                        <td>@Html.ActionLink("Edit", "Update", "Books", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)</td>
+                         <td>@Html.ActionLink("Add Copy", "CreateCopy", "Books", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)</td>
+                          <td>  @if (item.NumberCopiesBorrowed == 0)
+                            {
+                                <span>@Html.ActionLink("Delete", "Delete", "Books", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)|</span>
+
+                            }
+                            </td>
+                        <td>
+                            @if (item.NumberCopiesBorrowed < item.BookCopies.Count)
+                            {
+                                <span>@Html.ActionLink("Delete Copy", "DeleteCopy", "Books", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)|</span>
+                            }
+
+                        </td>
+
+                    }
+                </tr>
+            }
+
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>Journals</legend>
+        @if ((bool)ViewData["IsLibrarian"])
+        {
+            <span>@Html.ActionLink("Add Journal", "Create", "Journals", new { memberID = (int)ViewData["MemberID"] }, null)</span>
+        }
+        <table width="100%" border="1" style="margin-left:auto;margin-right:auto">
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Author
+                </th>
+
+                <th>Number of Issues</th>
+                <th>Number of Issues Checked Out</th>
+                <th></th>
+                <th colspan="4">
+                    @if ((bool)ViewData["IsLibrarian"])
+                    { 
+                        <b>Admin</b>
+                    }
+                 </th>
+                
+            </tr>
+
+            @foreach (LibrarySystem.Areas.Inventory.Models.Journal item in Model["Journals"])
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.JournalIssues.Count)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.NumberIssuesBorrowed)
+                    </td>
+                    <td align="center">
+                        @if (item.NumberIssuesBorrowed < item.JournalIssues.Count && (bool)ViewData["ShowBorrow"] == true)
+                        {
+                            @Html.ActionLink("Borrow", "BorrowIssue", "Journals", new { journalID = item.GetId(), MemberID = ViewData["MemberID"] }, null);
+                        }
+                        else
+                        {
+
+                        }
+
+
+                    </td>
+                    @if((bool)ViewData["IsLibrarian"])
+                    {
+                          <td>@Html.ActionLink("Edit", "Update", "Journals", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)</td>
+                          <td>@Html.ActionLink("Add Issue", "CreateIssue", "Journals", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)</td>
+                          <td>
+                            @if(item.NumberIssuesBorrowed == 0)
+                            {
+                               @Html.ActionLink("Delete", "Delete", "Journals", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)
+                            }
+                            </td>
+                            <td>
+                            @if(item.NumberIssuesBorrowed < item.JournalIssues.Count)
+                            {
+                               @Html.ActionLink("Delete Issue", "DeleteIssue", "Journals", new { id = item.ID, memberID = (int)ViewData["MemberID"] }, null)
+                            }
+                            </td>
+
+                        
+
+                    }
+                </tr>
+            }
+
+        </table>
+    </fieldset>

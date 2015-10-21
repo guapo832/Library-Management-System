@@ -1,0 +1,84 @@
+﻿@model Dictionary<String, List<LibrarySystem.InventoryItemBase>>
+
+@{
+    ViewBag.Title = "Member";
+    Layout = "~/Views/Shared/_LibrarySystemLayoutPage.cshtml";
+}
+
+<h2>Inventory for Staff</h2>
+
+<hr/>
+@Html.ActionLink("My Profile", "Details", "Member", new { area = "Members", mid = (int)ViewData["MemberID"] }, null) | 
+@Html.Partial("~/Areas/Inventory/Views/Shared/_Logout.cshtml")
+<fieldset>
+    <legend>Books</legend>
+<table>
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Author
+        </th>
+
+        <th>Number of Copies</th>
+        <th>Number of Copies Checked Out</th>
+        <th></th>
+    </tr>
+
+@foreach (LibrarySystem.Areas.Inventory.Models.Book item in Model["Books"]) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td align="center">
+            @Html.DisplayFor(modelItem => item.BookCopies.Count)
+        </td>
+        <td align="center">
+            @Html.DisplayFor(modelItem => item.NumberCopiesBorrowed)
+        </td>
+        <td align="center">
+            @if(item.NumberCopiesBorrowed<item.BookCopies.Count && (bool)ViewData["ShowBorrow"] == true) {
+                @Html.ActionLink("Borrow", "BorrowCopy","Books", new { bookID = item.GetId(), MemberID=ViewData["MemberID"] }, null);
+            } else{
+                
+            } 
+            
+
+        </td>
+    </tr>
+}
+
+</table>
+</fieldset>
+
+<fieldset>
+    <legend>Journals</legend>
+    <table>
+        <tr>
+            <th>
+               Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th></th>
+        </tr>
+
+ @foreach (LibrarySystem.Areas.Inventory.Models.Journal item in Model["Journals"])
+ {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+    </tr>
+ }
+
+    </table>
+</fieldset>
