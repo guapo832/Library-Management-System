@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LibrarySystem.Areas.Members.Models
 {
+    [Serializable()]
     public abstract class LibraryMemberBase
     {
         #region Constructors
@@ -26,7 +28,7 @@ namespace LibrarySystem.Areas.Members.Models
         internal void Return(IBorrowable itemToReturn)
         {
             itemToReturn.Return();
-            DropOffReturnedItem(itemToReturn.GetId());
+            DropOffReturnedItem(itemToReturn.GetId(), itemToReturn.GetItem().ID);
         }
         public List<IBorrowable> BorrowedItems
         {
@@ -37,7 +39,7 @@ namespace LibrarySystem.Areas.Members.Models
         
        
         abstract protected void PickUpBorrowedItem(IBorrowable itemToBorrow);
-        abstract protected void DropOffReturnedItem(int id);
+        abstract protected void DropOffReturnedItem(int iborrowableID,int inventoryID);
         
     }
 }

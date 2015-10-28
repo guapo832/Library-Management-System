@@ -35,7 +35,7 @@
                       <tr>
                           <td>@item.GetItem().Title</td>
                           <td>@item.GetItem().Author</td>
-                          <td>@Html.ActionLink("Return","ReturnItem",new{ memberid=Model.ID, itemID=item.GetId()},null)</td>
+                          <td>@Html.ActionLink("Return","ReturnItem",new{ memberid=Model.ID, itemID=item.GetItem().ID},null)</td>
                       </tr>
                   }
               </tbody>

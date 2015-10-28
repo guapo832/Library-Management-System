@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LibrarySystem
 {
+    [Serializable()]
     public abstract class InventoryItemBase
     {
         public int ID {get; set;}

@@ -15,6 +15,7 @@ namespace LibrarySystem.Areas.Inventory.Models
 
         private int numIssuesBorrowed = 0;
         public List<Issue> JournalIssues { get; set; }
+
         public int NumberIssuesBorrowed
         {
             get { return numIssuesBorrowed; }
@@ -70,9 +71,9 @@ namespace LibrarySystem.Areas.Inventory.Models
 
             #endregion
             #region internal
-
-
+           
             #endregion
+
             #region Interface members
             public void Borrow()
             {

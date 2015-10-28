@@ -67,10 +67,11 @@ namespace LibrarySystem.Areas.Inventory.Models
 
             #endregion
             #region internal
-
+            
 
             #endregion
             #region Interface members
+           
             public void Borrow()
             {
                 if (isBorrowed)

@@ -31,7 +31,7 @@ namespace LibrarySystem.Areas.Members.Controllers
         {
             Dictionary<String, List<LibraryMemberBase>> members = Session["LibraryMembers"] as Dictionary<String, List<LibraryMemberBase>>;
             LibraryMemberBase member = members["Staff"].Single(s => s.ID == memberid);
-            IBorrowable itemToReturn = (IBorrowable)member.BorrowedItems.Single(s=>s.GetId() == itemID);
+            IBorrowable itemToReturn = (IBorrowable)member.BorrowedItems.First(s=>s.GetItem().ID == itemID);
             member.Return(itemToReturn);
             return RedirectToAction("Details", new { mid = memberid });
         }

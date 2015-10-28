@@ -189,11 +189,14 @@
     <Compile Include="TokenHelper.cs" />
     <Compile Include="Utilities\Inventory.cs" />
     <Compile Include="Utilities\Members.cs" />
+    <Compile Include="Utilities\Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\inventory.txt" />
+    <Content Include="App_Data\members.txt" />
     <Content Include="Filters\SharePointContextFilterAttribute.vb" />
     <Content Include="Global.asax" />
     <Content Include="SharePointContext.vb" />
@@ -209,9 +212,7 @@
     </Content>
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

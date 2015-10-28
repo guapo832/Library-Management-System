@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using LibrarySystem.Areas.Inventory.Models;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LibrarySystem.Areas.Members.Models
 {
+    [Serializable()]
     public class StaffMember : LibraryMember
     {
         public bool IsLibrarian { get; set; }
@@ -13,7 +15,7 @@ namespace LibrarySystem.Areas.Members.Models
         {
             IsLibrarian = false;
         }
-        internal const int MAX_BORROW = 10;  
+        public const int MAX_BORROW = 10;  
         
 
        protected override void PickUpBorrowedItem(IBorrowable itemToBorrow)
@@ -25,13 +27,13 @@ namespace LibrarySystem.Areas.Members.Models
                 throw new Exception("Borrow Limit Reached");
             }
         }
-       protected override void DropOffReturnedItem(int id)
-       {
+       //protected override void DropOffReturnedItem(int iborrowableID, int inventoryID)
+       //{
            
-                //borrowedItems.Remove(itemToRemove.GetId());
-           var itemtoremove = borrowedItems.Single(s=>s.GetId() == id );
-           if(itemtoremove==null) throw new Exception("This item doesn't appear to be checked out ");
-           borrowedItems.Remove(itemtoremove);
-       }
+       //         //borrowedItems.Remove(itemToRemove.GetId());
+       //    var itemtoremove = borrowedItems.First(s=>s.GetId() == iborrowableID && s.GetItem().ID == inventoryID );
+       //    if(itemtoremove==null) throw new Exception("This item doesn't appear to be checked out ");
+       //    borrowedItems.Remove(itemtoremove);
+       //}
     }
 }

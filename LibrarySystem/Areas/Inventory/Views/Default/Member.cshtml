@@ -10,6 +10,12 @@
 <hr/>
 @Html.ActionLink("My Profile", "Details", "Member", new { area = "Members", mid = (int)ViewData["MemberID"] }, null) | 
 @Html.Partial("~/Areas/Inventory/Views/Shared/_Logout.cshtml")
+
+@if ((bool)ViewData["ShowBorrow"] == false)
+{
+    <h3 style="color:red">Warning: You have reached your checkout limit</h3>
+}
+
 <fieldset>
     <legend>Books</legend>
 <table>
