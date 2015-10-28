@@ -19,13 +19,8 @@ namespace LibrarySystem
 
         private string inventoryFilepath = "";
         private string memberfilepath = "";
-        protected void Application_end(object sender, EventArgs args)
-        {
-            Dictionary<string, List<InventoryItemBase>> inventory = Session["Inventory"] as Dictionary<string, List<InventoryItemBase>>;
-            Dictionary<string, List<LibraryMemberBase>> LibraryMembers = Session["LibraryMembers"] as Dictionary<string, List<LibraryMemberBase>>;
-            Utilities.Serializer.serialize(inventoryFilepath, inventory);
-            Utilities.Serializer.serialize(memberfilepath, LibraryMembers);
-         }
+       
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -42,14 +37,14 @@ namespace LibrarySystem
         }
 
         
-
+        /// <summary>
+        /// if no file exists we will build a new data source and use that.
+        /// </summary>
+        /// <returns></returns>
         private Dictionary<string, List<InventoryItemBase>> initializeInventoryData()
         {
             List<InventoryItemBase> journals = new List<InventoryItemBase>();
             List<InventoryItemBase> books = new List<InventoryItemBase>();
-
-                    
-
 
             books.Add(new Book(1) { Author = "J.K Rawling", Title = "Test Book 1" });
             List<LibrarySystem.Areas.Inventory.Models.Book.Copy> bookCopies = ((Book)books[0]).BookCopies;
@@ -75,6 +70,11 @@ namespace LibrarySystem
             inventory.Add("Books", books);
             return inventory;
         }
+
+        /// <summary>
+        /// if no data file exists we'll build one in memory
+        /// </summary>
+        /// <returns></returns>
         private Dictionary<String, List<LibraryMemberBase>> initializeMemberData()
         {
             Dictionary<String, List<LibraryMemberBase>> LibraryMembers = new Dictionary<string, List<LibraryMemberBase>>(); LibraryMembers = new Dictionary<string, List<LibraryMemberBase>>();
@@ -94,6 +94,10 @@ namespace LibrarySystem
             return LibraryMembers;
         }
 
+        /// <summary>
+        /// get data from file
+        /// </summary>
+        /// <returns></returns>
         private Dictionary<String , List<InventoryItemBase>> getInventoryData(){
             // Dictionary<String, List<InventoryItemBase>> inventory =  new Dictionary<String,List<InventoryItemBase>>();
 
@@ -107,6 +111,11 @@ namespace LibrarySystem
 
             return objects;
         }
+
+        /// <summary>
+        /// gets data from file.
+        /// </summary>
+        /// <returns></returns>
         private Dictionary<String, List<LibraryMemberBase>>  getMemberData(){
             // Dictionary<String, List<InventoryItemBase>> inventory =  new Dictionary<String,List<InventoryItemBase>>();
 
@@ -120,6 +129,10 @@ namespace LibrarySystem
 
             return objects;
         }
+
+        /// <summary>
+        /// initialize the data to be used on the site.
+        /// </summary>
         protected void Session_Start()
         {
             inventoryFilepath= Server.MapPath("~/App_Data/inventory.txt");

@@ -40,16 +40,21 @@ namespace LibrarySystem.Areas.Inventory.Controllers
         [HttpPost]
         public ActionResult Create(int memberID, FormCollection coll)
         {
-            var member = Utilities.Members.getMember(Session, memberID, Utilities.Members.MemberType.Staff);
-            if (!member.IsLibrarian) throw new Exception("You do not have permissions to this page");
-            var books = Utilities.Inventory.GetAllInventory(Session, Utilities.Inventory.InventoryTypes.Books);
-            var book = new Book(Utilities.Inventory.getNextID(books)) { Author = coll["Author"], Title = coll["Title"], BookCopies = new List<LibrarySystem.Areas.Inventory.Models.Book.Copy>() };
+            if (ModelState.IsValid)
+            {
+                var member = Utilities.Members.getMember(Session, memberID, Utilities.Members.MemberType.Staff);
+                if (!member.IsLibrarian) throw new Exception("You do not have permissions to this page");
+                var books = Utilities.Inventory.GetAllInventory(Session, Utilities.Inventory.InventoryTypes.Books);
+                var book = new Book(Utilities.Inventory.getNextID(books)) { Author = coll["Author"], Title = coll["Title"], BookCopies = new List<LibrarySystem.Areas.Inventory.Models.Book.Copy>() };
 
-            books.Add(book);
-            Dictionary<String, List<InventoryItemBase>> inventory = Session["Inventory"] as Dictionary<String, List<InventoryItemBase>>;
-            inventory[Utilities.Inventory.InventoryTypes.Books.ToString()] = books;
-            Session["Inventory"] = inventory;
-            return RedirectToAction(Utilities.Members.MemberType.Staff.ToString(), "Default", new { mid = memberID });
+                books.Add(book);
+                Dictionary<String, List<InventoryItemBase>> inventory = Session["Inventory"] as Dictionary<String, List<InventoryItemBase>>;
+                inventory[Utilities.Inventory.InventoryTypes.Books.ToString()] = books;
+                Session["Inventory"] = inventory;
+                return RedirectToAction(Utilities.Members.MemberType.Staff.ToString(), "Default", new { mid = memberID });
+            }
+
+            return View(memberID);
         }
         public ActionResult Update(int id, int memberID)
         {

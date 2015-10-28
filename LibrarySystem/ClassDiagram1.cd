@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LibrarySystem.MvcApplication">
+    <Position X="12.25" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAAAAAIAAAAAAAAAIAAgAAAAAIDAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.InventoryItemBase" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgEAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InventoryItemBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Inventory.Controllers.BooksController">
+    <Position X="9.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQACgAAAAABAAAAAAAAgAAAAAEAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Inventory\Controllers\BooksController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Inventory.Controllers.DefaultController">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Inventory\Controllers\DefaultController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Inventory.Controllers.JournalsController">
+    <Position X="9.75" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAABABAAAAAAAAAAAAAAEAAUBAAAAAAAAAAAA=</HashCode>
+      <FileName>Areas\Inventory\Controllers\JournalsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Inventory.Models.Book">
+    <Position X="3.5" Y="3" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="LibrarySystem.Areas.Inventory.Models.Book.Copy">
+        <TypeIdentifier>
+          <NewMemberFileName>Areas\Inventory\Models\Book.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <InheritanceLine Type="LibrarySystem.InventoryItemBase" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="1.062" />
+        <Point X="6.75" Y="1.185" />
+        <Point X="5.873" Y="1.185" />
+        <Point X="5.873" Y="3" />
+        <Point X="5.75" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAMIgAAAAgAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Areas\Inventory\Models\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Inventory.Models.Journal">
+    <Position X="6" Y="1.5" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="LibrarySystem.Areas.Inventory.Models.Journal.Issue">
+        <TypeIdentifier>
+          <NewMemberFileName>Areas\Inventory\Models\Journal.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAEAACBAQAAAAAAAAAQAAAACAAAIAAAA=</HashCode>
+      <FileName>Areas\Inventory\Models\Journal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Members.Controllers.MemberController">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Members\Controllers\MemberController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Members.Controllers.StaffController">
+    <Position X="9.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Areas\Members\Controllers\StaffController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Members.Models.LibraryMember">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAA=</HashCode>
+      <FileName>Areas\Members\Models\LibraryMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Members.Models.LibraryMemberBase">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAgAAAAAAEAAAIIAAACgAAAAAAEAAAAAA=</HashCode>
+      <FileName>Areas\Members\Models\LibraryMemberBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Areas.Members.Models.StaffMember">
+    <Position X="0.5" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAQAAAAAAAA=</HashCode>
+      <FileName>Areas\Members\Models\StaffMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Controllers.HomeController">
+    <Position X="9.75" Y="11" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Utilities.Members">
+    <Position X="12.25" Y="4.75" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="LibrarySystem.Utilities.Members.MemberType">
+        <TypeIdentifier>
+          <NewMemberFileName>Utilities\Members.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Utilities\Members.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LibrarySystem.Utilities.Serializer">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Serializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LibrarySystem.IBorrowable">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAgAAEAAAAAAAAAAAAAAAAEIIAAAA=</HashCode>
+      <FileName>IBorrowable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

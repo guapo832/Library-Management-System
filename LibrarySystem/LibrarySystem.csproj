@@ -265,6 +265,7 @@
     <Content Include="Views\Shared\_LibrarySystemLayoutPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\gwyerbyLMS.pubxml" />
   </ItemGroup>
   <PropertyGroup>

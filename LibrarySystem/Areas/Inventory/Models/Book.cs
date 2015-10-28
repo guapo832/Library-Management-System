@@ -9,6 +9,10 @@ namespace LibrarySystem.Areas.Inventory.Models
     [Serializable]
     public class Book : InventoryItemBase
     {
+        /// <summary>
+        /// constructor sets empty list of copies. and sets the id of the book.
+        /// </summary>
+        /// <param name="id"></param>
        public Book(int id):base(id)
        {
            BookCopies = new List<Copy>();
@@ -20,10 +24,19 @@ namespace LibrarySystem.Areas.Inventory.Models
         {
             get { return numCopiesBorrowed; }
         }
+
+        /// <summary>
+        /// increment count of borrowed copies of this book.
+        /// called by abstract parent.
+        /// </summary>
         internal void BorrowCopy()
         {
             numCopiesBorrowed++;
         }
+
+        /// <summary>
+        /// decrement count of borrowed copies of this book
+        /// </summary>
         internal void ReturnCopy()
         {
             numCopiesBorrowed--;
@@ -43,8 +56,16 @@ namespace LibrarySystem.Areas.Inventory.Models
             return copy;
         }
 
+
+        /// <summary>
+        /// return the id of the book
+        /// </summary>
+        /// <returns>id of tghe book</returns>
         public int GetId(){return base.ID;}
 
+        /// <summary>
+        /// sub class for each copy of a book.
+        /// </summary>
         [Serializable]
         public class Copy : IBorrowable
         {
@@ -71,7 +92,9 @@ namespace LibrarySystem.Areas.Inventory.Models
 
             #endregion
             #region Interface members
-           
+           /// <summary>
+           /// make this copy unavailable and call parents borrow copy method.
+           /// </summary>
             public void Borrow()
             {
                 if (isBorrowed)
@@ -80,6 +103,10 @@ namespace LibrarySystem.Areas.Inventory.Models
                 this.isAvailable = false;
                 this.isBorrowed = true;
             }
+
+            /// <summary>
+            /// returns a copy of a book
+            /// </summary>
             public void Return()
             {
                 this.isBorrowed = false;
@@ -88,6 +115,10 @@ namespace LibrarySystem.Areas.Inventory.Models
                 //testing
 
             }
+
+            /// <summary>
+            /// not used, but could be implemented later.
+            /// </summary>
             public void Browse()
             {
                 if (isBorrowed)
