@@ -27,13 +27,6 @@ namespace LibrarySystem.Areas.Members.Models
                 throw new Exception("Borrow Limit Reached");
             }
         }
-       //protected override void DropOffReturnedItem(int iborrowableID, int inventoryID)
-       //{
-           
-       //         //borrowedItems.Remove(itemToRemove.GetId());
-       //    var itemtoremove = borrowedItems.First(s=>s.GetId() == iborrowableID && s.GetItem().ID == inventoryID );
-       //    if(itemtoremove==null) throw new Exception("This item doesn't appear to be checked out ");
-       //    borrowedItems.Remove(itemtoremove);
-       //}
+      
     }
 }
